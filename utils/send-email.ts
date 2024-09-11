@@ -18,7 +18,7 @@ export function sendEmail(data: FormData) {
     .then((res) => res.json())
     .then((response) => {
       Swal.fire({
-        title: 'הצלחה!',
+        title: 'ההודעה שלך נשלחה בהצלחה!',
         text: response.message,
         icon: 'success',
         confirmButtonText: 'אישור'
