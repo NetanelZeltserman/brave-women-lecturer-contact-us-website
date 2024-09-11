@@ -15,10 +15,9 @@ export async function POST(request: NextRequest) {
     },
   });
 
-  const mailOptions: Mail.Options = {
+  const mailOptionsToOwner: Mail.Options = {
     from: process.env.MY_EMAIL,
     to: process.env.MY_EMAIL,
-    cc: email,
     subject: `הודעה מ${name} (${phone}${email ? `, ${email}` : ''})`,
     text: `${message}\n
 ------------------------
@@ -28,9 +27,20 @@ ${companyName ? `שם חברה: ${companyName}` : ''}
 מייל: ${email || 'לא סופק'}`,
   };
 
-  const sendMailPromise = () =>
+  const mailOptionsToUser: Mail.Options = {
+    from: process.env.MY_EMAIL,
+    to: email,
+    subject: 'תודה על פנייתך',
+    text: `תודה רבה על פנייתך
+קיבלתי את המייל ואחזור אליך בהקדם האפשרי
+
+בברכה,
+אביטל גולן`,
+  };
+
+  const sendMailPromise = (options: Mail.Options) =>
     new Promise<string>((resolve, reject) => {
-      transport.sendMail(mailOptions, function (err) {
+      transport.sendMail(options, function (err) {
         if (!err) {
           resolve('Email sent');
         } else {
@@ -40,7 +50,10 @@ ${companyName ? `שם חברה: ${companyName}` : ''}
     });
 
   try {
-    await sendMailPromise();
+    await sendMailPromise(mailOptionsToOwner);
+    if (email) {
+      await sendMailPromise(mailOptionsToUser);
+    }
     return NextResponse.json({ message: 'Email sent' });
   } catch (err) {
     return NextResponse.json({ error: err }, { status: 500 });
