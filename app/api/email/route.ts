@@ -54,7 +54,7 @@ ${companyName ? `שם חברה: ${companyName}` : ''}
     if (email) {
       await sendMailPromise(mailOptionsToUser);
     }
-    return NextResponse.json({ message: 'Email sent' });
+    return NextResponse.json({ message: 'ההודעה נשלחה בהצלחה' });
   } catch (err) {
     return NextResponse.json({ error: err }, { status: 500 });
   }
