@@ -1,3 +1,5 @@
+![Intro Banner](public/vid/intro_banner.mp4)
+
 # Brave Women Lecturer Contact Website
 
 This project is a Next.js-based website for a lecturer who empowers women through her life story. The site showcases her background and provides a contact form for potential clients or event organizers.
