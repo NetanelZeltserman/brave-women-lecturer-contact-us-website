@@ -22,6 +22,7 @@ export default function RootLayout({
     <html dir="rtl" lang="he">
       <Head>
         <meta name="google-site-verification" content="jOC20jQPr6lT-g7g2N0sxwvanwXXHNjDNS5jgvrUKCo" />
+        <script async src="https://cdn.userway.org/widget.js" data-account="b6scwwQYZQ"></script>
       </Head>
       <Analytics />
       <SpeedInsights />
