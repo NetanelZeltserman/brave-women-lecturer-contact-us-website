@@ -22,21 +22,19 @@ export default function Home() {
       canvas.height = window.innerHeight;
     };
 
-    const createDot = () => {
-      return {
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 200 + 100, // Increased radius for more blur
-        dx: (Math.random() - 0.5) * 2,
-        dy: (Math.random() - 0.5) * 2,
-        hue: Math.random() * 60 + 240, // Purple hues
-      };
-    };
+    const createDot = () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      radius: Math.random() * 200 + 100,
+      dx: (Math.random() - 0.5) * 2,
+      dy: (Math.random() - 0.5) * 2,
+      hue: Math.random() * 60 + 240,
+    });
 
     let dots: ReturnType<typeof createDot>[] = [];
 
     const initDots = () => {
-      dots = Array.from({ length: 10 }, () => createDot());
+      dots = Array.from({ length: 10 }, createDot);
     };
 
     const animate = () => {
@@ -44,20 +42,18 @@ export default function Home() {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       dots.forEach(dot => {
-        ctx.beginPath();
         const gradient = ctx.createRadialGradient(dot.x, dot.y, 0, dot.x, dot.y, dot.radius);
-        gradient.addColorStop(0, `hsla(${dot.hue}, 71%, 64%, 0.1)`); // Reduced opacity for more blur
-        gradient.addColorStop(1, `hsla(${dot.hue}, 71%, 64%, 0)`); // Fade to transparent
+        gradient.addColorStop(0, `hsla(${dot.hue}, 71%, 64%, 0.1)`);
+        gradient.addColorStop(1, `hsla(${dot.hue}, 71%, 64%, 0)`);
+
+        ctx.beginPath();
         ctx.fillStyle = gradient;
         ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
         ctx.fill();
 
-        // Apply gaussian blur
-        ctx.filter = 'blur(50px)'; // Increased blur amount
-        ctx.fillStyle = gradient;
-        ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
+        ctx.filter = 'blur(50px)';
         ctx.fill();
-        ctx.filter = 'none'; // Reset filter
+        ctx.filter = 'none';
 
         dot.x += dot.dx;
         dot.y += dot.dy;
@@ -69,16 +65,18 @@ export default function Home() {
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    resize();
-    initDots();
-    window.addEventListener('resize', () => {
+    const handleResize = () => {
       resize();
       initDots();
-    });
+    };
+
+    resize();
+    initDots();
+    window.addEventListener('resize', handleResize);
     animate();
 
     return () => {
-      window.removeEventListener('resize', resize);
+      window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
