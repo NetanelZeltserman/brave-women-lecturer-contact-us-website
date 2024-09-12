@@ -10,6 +10,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'אביטל גולן-שפר — נשים אמיצות',
   description: 'הרצאות לנשים אמיצות',
+  keywords: 'אביטל גולן, אביטל גולן שפר, הרצאה, הרצאות, העצמה נשית, סיפור חיים, נשים מוכות',
 }
 
 export default function RootLayout({
@@ -18,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html dir="rtl" lang="en">
+    <html dir="rtl" lang="he">
       <Head>
         <meta name="google-site-verification" content="jOC20jQPr6lT-g7g2N0sxwvanwXXHNjDNS5jgvrUKCo" />
       </Head>
