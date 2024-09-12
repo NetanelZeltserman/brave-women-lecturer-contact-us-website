@@ -8,7 +8,8 @@ export function sendEmail(data: FormData) {
     text: 'אנא המתן בזמן שאנו שולחים את ההודעה שלך',
     icon: 'info',
     allowOutsideClick: false,
-    showConfirmButton: false
+    showConfirmButton: false,
+    showCloseButton: true
   });
 
   fetch(apiEndpoint, {
@@ -21,7 +22,8 @@ export function sendEmail(data: FormData) {
         title: 'ההודעה שלך נשלחה בהצלחה!',
         text: response.message,
         icon: 'success',
-        confirmButtonText: 'אישור'
+        confirmButtonText: 'אישור',
+        showCloseButton: true
       });
     })
     .catch((err) => {
@@ -29,7 +31,8 @@ export function sendEmail(data: FormData) {
         title: 'שגיאה!',
         text: err.message || 'אירעה שגיאה בעת שליחת האימייל.',
         icon: 'error',
-        confirmButtonText: 'אישור'
+        confirmButtonText: 'אישור',
+        showCloseButton: true
       });
     });
 }
