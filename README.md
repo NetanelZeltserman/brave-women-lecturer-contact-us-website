@@ -1,34 +1,99 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Brave Women Lecturer Contact Website
+
+This project is a Next.js-based website for a lecturer who empowers women through her life story. The site showcases her background and provides a contact form for potential clients or event organizers.
+
+## Features
+
+- Responsive design using Tailwind CSS
+- Contact form with custom email sending functionality using a custom SMTP server (can be configured to Gmail or other services as well)
+- Animated background using HTML5 Canvas
+- Sentry Integration for error tracking
+- Performance monitoring with Vercel Analytics and Speed Insights
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+- Node.js (version 16 or later)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+
+
+```
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+or
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+or
 
-## Learn More
+```
+yarn install
+```
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Create a `.env` file in the root directory and add the following environment variables, make sure to replace the values with your own:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```
+SMTP_HOST=smtp.example.com
+SMTP_PORT=587
+SMTP_USER=user@example.com
+SMTP_PASSWORD=password
+MY_EMAIL=my@email.com
+```
 
-## Deploy on Vercel
+### Running the Development Server
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+or
+
+```
+yarn dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+
+## Project Structure
+
+- `app/`: Contains the main application code
+- `components/`: Reusable React components
+- `public/`: Static assets
+- `utils/`: Utility functions
+
+## Key Components
+
+- Home Page: `app/page.tsx`
+- Contact Form: `components/forms/contact.tsx`
+- Email Sending Logic: `app/api/email/route.ts`
+
+## Deployment
+
+This project is set up for deployment on Vercel. Simply push to the main branch to trigger a deployment.
+
+## Error Tracking and Monitoring
+
+Sentry is integrated for error tracking. Configuration can be found in:
+
+```typescript:sentry.client.config.ts
+startLine: 1
+endLine: 28
+```
+
+## Contributing
+
+Contributions are welcome. Please open an issue first to discuss what you would like to change.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
