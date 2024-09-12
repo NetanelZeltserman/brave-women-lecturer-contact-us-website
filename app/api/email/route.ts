@@ -35,7 +35,7 @@ ${companyName ? `שם חברה: ${companyName}` : ''}
 קיבלתי את המייל ואחזור אליך בהקדם האפשרי
 
 בברכה,
-אביטל גולן`,
+אביטל גולן שפר`,
   };
 
   const sendMailPromise = (options: Mail.Options) =>
