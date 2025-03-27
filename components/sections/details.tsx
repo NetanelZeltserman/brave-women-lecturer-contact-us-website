@@ -1,10 +1,10 @@
-export default function DetailsSection() {
+zexport default function DetailsSection() {
   return (
     <section className='flex flex-col items-center mb-12'>
       <h2 className='mb-8 text-3xl font-bold text-center text-primary'>
         שמי אביטל גולן שפר
         נשואה, אמא
-        <span className='block'>סטודנטית לתואר ראשון בעבודה סוציאלית מרצה להעצמה דרך סיפור חיים</span>
+        <span className='block'>סטודנטית לתואר ראשון בסוציולוגיה מרצה להעצמה דרך סיפור חיים</span>
       </h2>
 
       <p className='space-y-4 text-center text-gray-700'>
