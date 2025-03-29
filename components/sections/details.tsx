@@ -1,4 +1,4 @@
-zexport default function DetailsSection() {
+export default function DetailsSection() {
   return (
     <section className='flex flex-col items-center mb-12'>
       <h2 className='mb-8 text-3xl font-bold text-center text-primary'>
